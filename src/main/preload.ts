@@ -3,13 +3,17 @@
 
 // Disable no-unused-vars, broken for spread args
 /* eslint no-unused-vars: off */
-import { contextBridge } from 'electron';
+import { contextBridge, ipcRenderer } from 'electron';
+import { ICardData } from '../types';
+import { SET_CARDS, GET_CARDS } from './constants';
 
-const preloadHandler = {
+const handler = {
   ipcRenderer: {
+    setCards: (data: ICardData) => ipcRenderer.invoke(SET_CARDS, data) as Promise<undefined>,
+    getCards: () => ipcRenderer.invoke(GET_CARDS) as Promise<ICardData>,
   },
 };
 
-contextBridge.exposeInMainWorld('electron', preloadHandler);
+contextBridge.exposeInMainWorld('electron', handler);
 
-export type ElectronHandler = typeof preloadHandler;
+export type PreloadHandler = typeof handler;
