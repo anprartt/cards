@@ -10,30 +10,30 @@ import { mainConfig } from './config/webpack/webpack.main.config';
 import { rendererConfig } from './config/webpack/webpack.renderer.config';
 
 const config: ForgeConfig = {
-  packagerConfig: {
-    asar: true,
-  },
-  rebuildConfig: {},
-  makers: [new MakerSquirrel({}), new MakerZIP({}, ['darwin']), new MakerRpm({}), new MakerDeb({})],
-  plugins: [
-    new AutoUnpackNativesPlugin({}),
-    new WebpackPlugin({
-      mainConfig,
-      renderer: {
-        config: rendererConfig,
-        entryPoints: [
-          {
-            html: './src/index.html',
-            js: './src/renderer/renderer.ts',
-            name: 'main_window',
-            preload: {
-              js: './src/main/preload.ts',
+    packagerConfig: {
+        asar: true,
+    },
+    rebuildConfig: {},
+    makers: [new MakerSquirrel({}), new MakerZIP({}, ['darwin']), new MakerRpm({}), new MakerDeb({})],
+    plugins: [
+        new AutoUnpackNativesPlugin({}),
+        new WebpackPlugin({
+            mainConfig,
+            renderer: {
+                config: rendererConfig,
+                entryPoints: [
+                    {
+                        html: './src/index.html',
+                        js: './src/renderer/renderer.ts',
+                        name: 'main_window',
+                        preload: {
+                            js: './src/main/preload.ts',
+                        },
+                    },
+                ],
             },
-          },
-        ],
-      },
-    }),
-  ],
+        }),
+    ],
 };
 
 export default config;

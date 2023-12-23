@@ -8,10 +8,10 @@ import { ICardData } from '../types';
 import { SET_CARDS, GET_CARDS } from './constants';
 
 const handler = {
-  ipcRenderer: {
-    setCards: (data: ICardData) => ipcRenderer.invoke(SET_CARDS, data) as Promise<undefined>,
-    getCards: () => ipcRenderer.invoke(GET_CARDS) as Promise<ICardData>,
-  },
+    ipcRenderer: {
+        setCards: (data: ICardData) => ipcRenderer.invoke(SET_CARDS, data) as Promise<undefined>,
+        getCards: () => ipcRenderer.invoke(GET_CARDS) as Promise<ICardData>,
+    },
 };
 
 contextBridge.exposeInMainWorld('electron', handler);
