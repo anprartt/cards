@@ -4,13 +4,13 @@
 // Disable no-unused-vars, broken for spread args
 /* eslint no-unused-vars: off */
 import { contextBridge, ipcRenderer } from 'electron';
-import { ICardData } from '../types';
-import { SET_CARDS, GET_CARDS } from './constants';
+import { IFolder } from '../types';
+import { SET_FOLDERS, GET_FOLDERS } from './constants';
 
 const handler = {
     ipcRenderer: {
-        setCards: (data: ICardData) => ipcRenderer.invoke(SET_CARDS, data) as Promise<undefined>,
-        getCards: () => ipcRenderer.invoke(GET_CARDS) as Promise<ICardData>,
+        setFolders: (folders: IFolder[]) => ipcRenderer.invoke(SET_FOLDERS, folders) as Promise<undefined>,
+        getFolders: () => ipcRenderer.invoke(GET_FOLDERS) as Promise<IFolder[]>,
     },
 };
 

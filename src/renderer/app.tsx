@@ -1,13 +1,10 @@
-import { useElectronHandler } from './hooks';
+import { MainPage } from './pages/main-page';
+import { GlobalContext, useGlobalContext } from './context/global-context';
 
 export const App = () => {
-    // const setCards = useElectronHandler(window.electron.ipcRenderer.setCards, true, mockCards);
-    const getCards = useElectronHandler(window.electron.ipcRenderer.getCards, true);
-    console.log(getCards.data);
-
     return (
-        <div>
-            <h1>test</h1>
-        </div>
+        <GlobalContext.Provider value={useGlobalContext()}>
+            <MainPage />
+        </GlobalContext.Provider>
     );
 };

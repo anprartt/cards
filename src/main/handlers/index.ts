@@ -1,2 +1,2 @@
-export * from './handleSetCards';
-export * from './handleGetCards';
+export * from './handleSetFolders';
+export * from './handleGetFolders';

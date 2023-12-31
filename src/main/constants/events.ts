@@ -1,2 +1,2 @@
-export const SET_CARDS = 'set-cards';
-export const GET_CARDS = 'get-cards';
+export const SET_FOLDERS = 'set-folders';
+export const GET_FOLDERS = 'get-folders';
